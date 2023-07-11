@@ -10,7 +10,7 @@ The background, methods and results for these analyses can be found in the corre
 
 1. LBW Bayesian Modelling Code
 - functions: folder containing all the functions needed for the modelling code
-- inputs: folder containing all of the input data needed for the LBW estimates
+- inputs: folder containing all of the input data needed for the LBW estimates. This includes the LBW admin and survey data, and the WPP livebirths numbers. [[4]](#4)
 - models: folder containing <b>".txt"</b> files containing the code for the JAGS model
 - output: folder containing all outputs of the analysis.
 - R code which contains the order at which to run the R scripts for the modelling (<b>"0.master.R"</b>)
@@ -23,7 +23,7 @@ The background, methods and results for these analyses can be found in the corre
 
 3. Preterm Bayesian Modelling Codes
 - functions: folder containing all the functions needed for the modelling code
-- inputs: folder containing all of the input data needed for the Preterm birth estimates
+- inputs: folder containing all of the input data needed for the Preterm birth estimates. This includes the LBW admin and survey data, and the WPP livebirths numbers. [[4]](#4)
 - models: folder containing <b>".txt"</b> files containing the code for the JAGS model
 - output: folder containing all outputs of the analysis.
 - R code which contains the order at which to run the R scripts for the modelling (<b>"0.masterP.R"</b>)
@@ -62,4 +62,7 @@ United Nations Children’s Fund and the World Health Organization. UNICEF-WHO l
 
 <a id="3">[3]</a> 
 Ohuma E, Moller A-B, Bradley E et al. National, regional and global estimates of preterm birth in 2020, with trends from 2010: a systematic analysis. Lancet (in press).
+
+<a id="4">[4]</a> 
+United Nations Department of Economic and Social Affairs Population Division. World Population Prospects 2022, Online Edition. 2022 [Available from: https://population.un.org/wpp/Download/Standard/Population/]
 
