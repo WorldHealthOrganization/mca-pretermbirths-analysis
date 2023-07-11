@@ -1,4 +1,4 @@
-# mca-pretermbirths-analysis
+# WHO/UNICEF LBW and Preterm birth estimates (2020) analysis
 
 This repository contains the code and input data required to generate the WHO/UNICEF LBW and Preterm birth 2020 estimates [1,2].
 It also contains the regional and global LBW and Preterm outputs.
