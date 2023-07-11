@@ -1,6 +1,6 @@
 # mca-pretermbirths-analysis
 
-This repository contains the code and data required to generate the LBW and preterm birth 2020 estimates [1,2].
+This repository contains the code and data required to generate the WHO/UNICEF LBW and Preterm birth 2020 estimates [1,2].
 It also contains the regional and global LBW and Preterm outputs.
 
 1  Okwaraji Y, Krasevec J, Bradley E et al. National, regional and global estimates of low birthweight in 2020, with trends from 2000: a systematic analysis. Lancet (in press).
