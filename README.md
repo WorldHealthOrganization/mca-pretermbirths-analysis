@@ -5,6 +5,9 @@ It also contains the regional and global LBW and Preterm outputs.
 
 For each of the estimate code folders (LBWBayesianModelling and PretermBayesianModelling), there is a "0.master.R" file that contains all of the commands needed set up the project, create the input database, run the model, produce the country, regional and global estimates, create country estimates, and run the model validation.
 
+The regional and global outputs from these codes can be found in the "LBW regional and global estimates" and "Preterm regional and global estimates".
+
+The background, methods and results for these analyses can be found in the corresponding papers published in The Lancet [1,2].
 Any questions on running the code please email Ellen Bradley (ellen_bradley@outlook.com).
 
 [1]  Okwaraji Y, Krasevec J, Bradley E et al. National, regional and global estimates of low birthweight in 2020, with trends from 2000: a systematic analysis. Lancet (in press).
