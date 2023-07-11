@@ -34,6 +34,15 @@ The background, methods and results for these analyses can be found in the corre
 4. Preterm Regional and Global Estimates
 - <b>".csv"</b> files containing Preterm birth regional and global estimates, for 12 different regional groupings.
 
+5. LBW covariates
+- These are the covariates used for the LBW estimates where were: gross national income per person purchasing power parity (GNI) (constant 2017 international $), prevalence of underweight among female adults, adult female literacy rate, modern contraception prevalence rate and percentage urban population. These are included as <b>".csv"</b> and <b>".rds"</b> files.
+
+6. LBWfinalDatabase
+- This is the final database used for the modelling of the LBW estimates, after inclusion and exclusion criteria were applied.
+
+7. PretermfinalDatabase
+- This is the final database used for the modelling of the Preterm birth estimates, after inclusion and exclusion criteria were applied.
+
 ### Set-up
 For the chosen estimate: 
 1. Open the "0.loadPackages.R" file, and ensure all packages are installed. 
