@@ -51,7 +51,7 @@ The models used in both estimates are heirarchical bayesian regression models, i
 We thank Ellen Bradley (@ellenBradley18) for the development and implementation of the two model codes. 
 
 ### Conceptualisation of the Models
-We thank the LSHTM team (Ellen Bradley, Eric Ohuma, Alexandra Lewin, Yemi Okwaraji, Hannah Blencowe and Joy Lawn), the UNICEF team (Julia Krasevec, Joel Conkle, Samuel Chakwera, Jennifer Requejo and Chika Hayashi), the WHO team (Gretchen Stevens, Ann-Beth Moller, Jenny A Cresswell, Emily White Johansson and Allisyn Morran) and Laith Hussain-Alkhateeb.
+We thank Ellen Bradley, Eric Ohuma, Alexandra Lewin, Yemi Okwaraji, Hannah Blencowe and Joy Lawn (LSHTM), Julia Krasevec, Joel Conkle, Samuel Chakwera, Jennifer Requejo and Chika Hayashi (UNICEF), Gretchen Stevens, Ann-Beth Moller, Jenny A Cresswell, Emily White Johansson and Allisyn Morran (WHO) and Laith Hussain-Alkhateeb.
 
 ## References
 <a id="1">[1]</a> 
