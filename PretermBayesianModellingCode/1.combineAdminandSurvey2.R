@@ -22,7 +22,7 @@ pretermTogether<-rbind(adminAll2, studyAll2)
 
 #-------
 #ADD REGIONS
-regionCodes<-readRDS("output/regionCodes.rds")
+regionCodes<-readRDS("input/regionCodes.rds")
 pretermAll<-merge(x=pretermTogether, y=regionCodes, 
                   by="ISO", all.x=TRUE) %>% 
   filter(Year>=2010 & Year<=2020)
