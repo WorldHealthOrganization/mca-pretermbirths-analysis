@@ -1,13 +1,13 @@
-library(tidyverse)
-#devtools::install_github("MJAlexander/distortr")
-library(distortr)
-library(rjags)
-library(R2jags)
-library(fields)
-library(splines)
-library(boot)
-library(RColorBrewer)
-library(writexl)
+# library(tidyverse)
+# #devtools::install_github("MJAlexander/distortr")
+# library(distortr)
+# library(rjags)
+# library(R2jags)
+# library(fields)
+# library(splines)
+# library(boot)
+# library(RColorBrewer)
+# library(writexl)
 
 #Need to save an identical copy of the JAGS file with _modelVal so the models 
 # dont rewrite.

@@ -1,8 +1,8 @@
-library(meta)
-library(boot)
-library(dplyr)
-library(tidyverse)
-library(scales)
+# library(meta)
+# library(boot)
+# library(dplyr)
+# library(tidyverse)
+# library(scales)
 
 finalData<-readRDS("output/finalData.RDS")
 regionCodes<-readRDS("output/regionCodes.RDS")
@@ -63,31 +63,33 @@ data<-finalData2 %>%
   filter(Year>=2015) %>% 
   dplyr::select(ISO) %>% distinct()
 
-wpp2<-readRDS("output/wpp2.rds") %>% 
+# wpp2<-readRDS("output/wpp2.rds") %>% 
+#   filter(year==2020)
+wpp2020<-wpp2 %>% 
   filter(year==2020)
 
-wppR<-wpp2 %>% group_by(regionName2) %>% 
+wppR<-wpp2020 %>% group_by(regionName2) %>% 
   summarise(wppR=sum(wpp_lb))
 
-dataUsed<-merge(x=wpp2 %>% filter(ISO %in% data$ISO) %>% 
+dataUsed<-merge(x=wpp2020 %>% filter(ISO %in% data$ISO) %>% 
                   group_by(regionName2) %>% summarise(wpp=sum(wpp_lb)),
                 y=wppR, by="regionName2") %>% 
   mutate(perc=round(wpp/wppR*100,1))
 
-global<-wpp2 %>% filter(ISO %in% data$ISO)
+global<-wpp2020 %>% filter(ISO %in% data$ISO)
 
-sum(global$wpp_lb)/sum(wpp2$wpp_lb)
+sum(global$wpp_lb)/sum(wpp2020$wpp_lb)
 
 ##WB regions
 
 wbregionCodes<-read.csv("input/sbr_regions v2.csv") %>% dplyr::select(ISO=ISO3Code,
                                                                       WBRegion4)
-wppC<-merge(x=wpp2,
+wppC<-merge(x=wpp2020,
             y=wbregionCodes, by="ISO", all.x=TRUE)%>%  
   group_by(WBRegion4) %>% 
   summarise(wppR=sum(wpp_lb))
 
-wpp3<-merge(x=wpp2, 
+wpp3<-merge(x=wpp2020, 
             y=wbregionCodes, by="ISO", 
             all.x=TRUE)
 
@@ -173,7 +175,8 @@ lastestMetaEsts<-rbind(metaEstsR %>% mutate(regionName=row.names(metaEstsR)),
                        metaEstsT %>% mutate(regionName="Global"))
 
 #Read in the latest estimates
-rGLBW<-read.csv("output/pCCFullModel_16000_regionalAndGlobalEstimates.csv") %>% 
+  #rGLBW<-read.csv("output/pCCFullModel_16000_regionalAndGlobalEstimates.csv") %>% 
+  rGLBW<-read.csv("output/pCCFullModel_800_regionalAndGlobalEstimates.csv") %>% 
   filter(year==2020) %>% dplyr::select(regionName, estN, estNU, 
                                        estNL, est) %>% 
   rename(wpp_lb=estN) 
@@ -346,7 +349,7 @@ transformAll %>%
 
 
 #In height order
-wpp<-merge(x=readRDS("output/wpp2.rds") %>% filter(year==2020) %>% 
+wpp<-merge(x=wpp2020 %>% 
              group_by(regionName2) %>% 
              summarise(wpp_lb=sum(wpp_lb)), 
            y=rGLBW %>% dplyr::select(regionName2=regionName, est) %>% 
@@ -724,7 +727,8 @@ metaEstsR<-as.data.frame(list(LBWlt1000gL_meta=inv.logit(metaPlot$TE.random.w-1.
 
 lastestMetaEsts<-rbind(metaEstsR %>% mutate(regionName=row.names(metaEstsR)))
 
-rGLBW<-read.csv("output/pCCFullModel_16000_regionalAndGlobalEstimates.csv") %>% 
+# rGLBW<-read.csv("output/pCCFullModel_16000_regionalAndGlobalEstimates.csv") %>% 
+rGLBW<-read.csv("output/pCCFullModel_800_regionalAndGlobalEstimates.csv") %>% 
   filter(year==2020) %>% dplyr::select(regionName, estN, estNU, 
                                        estNL, est) %>% 
   rename(wpp_lb=estN) 
@@ -732,7 +736,7 @@ rGLBW<-read.csv("output/pCCFullModel_16000_regionalAndGlobalEstimates.csv") %>%
 total<-rGLBW %>% summarise(wpp_lb=sum(wpp_lb)) %>% 
   mutate(regionName="Total")
 
-wpp2<-readRDS("output/wpp2.RDS")
+# wpp2<-readRDS("output/wpp2.RDS")
 
 latestMetaEsts<-merge(x=lastestMetaEsts, y=rGLBW,
                       by="regionName", all.x=TRUE) %>%

@@ -535,9 +535,16 @@ for (i in 1:7){
   print(length(unique(data3$ISO)))
   data3<-merge(x=data3, y=wpp2 %>% filter(year>=2000) %>% dplyr::select(-c(regionName2, regionIndex2)), 
                by=c("ISO", "year"), all.x=TRUE)
- 
+  
+  if (i==7){
+    data3 <- data3 %>% 
+      rename("wpp_lb" = "wpp_lb.x")
+    data3 <- data3 %>% 
+      dplyr::select(-wpp_lb.y)
+  }
+  
   data5<-data3 %>% filter(!is.na(ISO)) %>% 
-    mutate(numbers=round(wpp_lb*inv.logit(mu),0)) %>% 
+    mutate(numbers=round(wpp_lb*inv.logit(mu),0)) %>%
     group_by(ISO,year) %>% mutate(iteration=row_number()) %>% 
     group_by(year, iteration) %>% 
     summarise(regionNumbers=sum(numbers),
@@ -553,7 +560,7 @@ for (i in 1:7){
            est=estN/wppR, 
            estU=estNU/wppR) %>% 
     mutate(regionIndex=i)
-  rm(data4)
+  # rm(data4)
   
   if (i==1){
     regionsAll<-data3

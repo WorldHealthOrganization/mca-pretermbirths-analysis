@@ -6,16 +6,16 @@ runModelValidation2<-function (input.data,
                                nreps = 10, alpha.level = 0.05, alpha.n = 0.1, seed = 123) 
 {
   
-  library(tidyverse)
-  #devtools::install_github("MJAlexander/distortr")
-  #library(distortr)
-  library(rjags)
-  library(R2jags)
-  library(fields)
-  library(splines)
-  library(boot)
-  library(RColorBrewer)
-  library(writexl)
+  # library(tidyverse)
+  # #devtools::install_github("MJAlexander/distortr")
+  # #library(distortr)
+  # library(rjags)
+  # library(R2jags)
+  # library(fields)
+  # library(splines)
+  # library(boot)
+  # library(RColorBrewer)
+  # library(writexl)
   
   df <- input.data
   df<-df %>% mutate(sourceIndex=ifelse(Source=="Admin", 1, 0),
