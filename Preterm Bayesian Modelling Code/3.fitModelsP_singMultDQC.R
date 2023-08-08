@@ -1,17 +1,17 @@
-library(tidyverse)
-#devtools::install_github("MJAlexander/distortr")
-library(distortr)
-library(rjags)
-library(R2jags)
-library(fields)
-library(splines)
-library(boot)
-library(RColorBrewer)
-library(writexl)
+# library(tidyverse)
+# #devtools::install_github("MJAlexander/distortr")
+# library(distortr)
+# library(rjags)
+# library(R2jags)
+# library(fields)
+# library(splines)
+# library(boot)
+# library(RColorBrewer)
+# library(writexl)
 
 source("functions/runMCMC2P.R")
 source("functions/runMCMCGlobal2P.R")
-source("0.loadPackages.R")
+# source("0.loadPackages.R")
 
 #-----
 #Data setup
