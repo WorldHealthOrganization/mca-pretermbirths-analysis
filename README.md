@@ -45,9 +45,12 @@ The background, methods and results for these analyses can be found in the corre
 
 ### Set-up
 For the chosen estimate: 
-1. Open the "0.loadPackages.R" file, and ensure all packages are installed. 
-2. Run the "0.loadPackages.R" file and "0.fileNames.R" file.
-3. Open the "0.master.R" file and run the files in the indicated order.
+1. You will need to install `JAGS` on your machine. 
+   This is a separate program outside of R which is what the RJags package runs through. 
+   Go to http://www.sourceforge.net/projects/mcmc-jags/files and click the green button `Download latest version`.
+2. Open the "0.loadPackages.R" file, and ensure all packages are installed. 
+3. Run the "0.loadPackages.R" file and "0.fileNames.R" file.
+4. Open the "0.master.R" file and run the files in the indicated order.
 All of the outputs are written to the "outputs" folder.
 
 Any questions on running the code please email Ellen Bradley (ellen_bradley@outlook.com).
@@ -58,6 +61,7 @@ The models used in both estimates are heirarchical bayesian regression models, i
 ## Acknowledgements
 ### Code 
 We thank Ellen Bradley (@ellenBradley18) for the development and implementation of the two model codes. 
+We thank Gerard Lopez (@LOPEZ-Gerard) for the testing and enchancement of this code into github.
 
 ### Conceptualisation of the Models
 We thank Ellen Bradley, Eric Ohuma, Alexandra Lewin, Yemi Okwaraji, Hannah Blencowe and Joy Lawn (LSHTM), Julia Krasevec, Joel Conkle, Samuel Chakwera, Jennifer Requejo and Chika Hayashi (UNICEF), Gretchen Stevens, Ann-Beth Moller, Jenny A Cresswell, Emily White Johansson and Allisyn Morran (WHO) and Laith Hussain-Alkhateeb.
