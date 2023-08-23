@@ -41,13 +41,6 @@ source("3.fitModelsP_singMultDQC.R")
 source("4.countryR&GratesandNumbers.R")
 
 
-#----- 5. Plot countries 
-#Takes the 195 country estimates from above and plots them alongside their
-# input data.
-# need to go in and run source("5. Plot countries (1 model) only.R") or the plots
-# wont load.
-source("5. Plot countries P (1 model) 1 plot.R")
-
 #---- 6. subgroupsMetaP
 #This is the meta-analysis of the subgroup data.
 # Adds additional study data.
@@ -56,11 +49,3 @@ source("5. Plot countries P (1 model) 1 plot.R")
 # Also plots the subgroups by region.
 source("6.subgroupsMetaP.R")
 
-
-#---- 7. splinesModelValidation
-#Reruns the full model and then with 20% less data inputs.
-# Repeats this for a defined number of iterations and compares
-# the two models. 
-#Need to go into the file and set the iterations, and save a copy of the model .txt file
-# with the same name but with "_modelVal" on the end.
-source("7. splineModelsValidationP.R")

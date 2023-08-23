@@ -80,11 +80,11 @@ input.data$sigma.y <- NA
 
 ## JAGS parameters
 nchains = 4
-nburnin = 1000
-niter = 1200
-nthin = 1
+nburnin = 100000
+nthin = 25
+niter = (nthin*4000)+nburnin
 
-totalIts<-(niter-nburnin)/nthin #should be 2000 for each chain
+totalIts<-(niter-nburnin)/nthin #should be 4000 for each chain
 
 # 3c. Splines order 1 -----------------------------------------------------
 # P-splines with first order penalization has intercept but no time trend

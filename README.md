@@ -18,8 +18,25 @@ The background, methods and results for these analyses can be found in the corre
 - R code which contains the packages needed for the code (<b>"0.loadPackages.R"</b>) 
 - 1-7 numbered R scripts: contatining all of the commands needed set up the project, create the input database, run the model, produce the country, regional and global estimates, create country estimates, and run the model validation.
 
-2. LBW Regional and Global Estimates
-- <b>".csv"</b> files containing LBW regional and global estimates, for 12 different regional groupings.
+2. Quick Access Inputs and Outputs - LBW 
+
+- LBWfinalInputDatabase: Final input database that was used in the LBW modelling, after inclusion and exclusion criteria were applied. This is included as <b>".csv"</b> and <b>".rds"</b> files.
+- LBWcovariates: These are the five covariate time-series (1995-2020) used for the LBW estimates: gross national income per person purchasing power parity (GNI) (constant 2017 international $), prevalence of underweight among female adults, adult female literacy rate, modern contraception prevalence rate and percentage urban population. These are included as <b>".csv"</b> and <b>".rds"</b> files.
+
+- LBWcountryEstimates - pCCFullModel_16000_Estimates: This includes the LBW estimates for 2000-2020 for 195 countries and areas.
+  - `est`, `estL` and `estU`: the point LBW rate estimates with 95% credible intervals. 
+  - predicted: 1 if there was no country data so the LBW rate is estimated using country intercepts and time trends from the region, and country-level covariates. 
+  - wpp_lb: the WPP 2022 [[4]](#4) livebirths estimates.
+  - `estN`, `estNL` and `estNU`: estimated number of LBW births with 95% credible interval, calculated by multiplying the point estimates by the wpp_lb. 
+
+- LBWregionalEstimates - pCCFullModel_16000_regionalAndGlobalEstimates: SDG revision 1 regional and global estimates. 
+  - `est`, `estL` and `estU`: the point LBW prevalence estimates with 95% credible intervals (multiply by 100 for rates). 
+  - predicted: 1 if there was no country data so the LBW rate is estimated using country intercepts and time trends from the region, and country-level covariates. 
+  - wpp_lb: the WPP 2022 [[4]](#4) livebirths estimates country estimates summed to the regional level.
+  - `estN`, `estNL` and `estNU`: estimated number of LBW births with 95% credible interval, calculated by multiplying the point estimates by the wpp_lb.
+
+- LBW Other Regional and Global Estimates: <b>".csv"</b> files containing LBW regional and global estimates as above, for 12 different regional groupings.
+
 
 3. Preterm Bayesian Modelling Codes
 - functions: folder containing all the functions needed for the modelling code
@@ -31,17 +48,16 @@ The background, methods and results for these analyses can be found in the corre
 - R code which contains the packages needed for the code (<b>"0.loadPackages.R"</b>) 
 - 1-7 numbered R scripts: contatining all of the commands needed set up the project, create the input database, run the model, produce the country, regional and global estimates, create country estimates, and run the model validation.
   
-4. Preterm Regional and Global Estimates
-- <b>".csv"</b> files containing Preterm birth regional and global estimates, for 12 different regional groupings.
+4. Quick Access Inputs and Outputs - Preterm 
 
-5. LBW covariates
-- These are the covariates used for the LBW estimates where were: gross national income per person purchasing power parity (GNI) (constant 2017 international $), prevalence of underweight among female adults, adult female literacy rate, modern contraception prevalence rate and percentage urban population. These are included as <b>".csv"</b> and <b>".rds"</b> files.
+- PretermfinalInputDatabase: Final input database that was used in the Preterm modelling, after inclusion and exclusion criteria were applied. This is included as <b>".csv"</b> and <b>".rds"</b> files. 
 
-6. LBWfinalDatabase
-- This is the final database used for the modelling of the LBW estimates, after inclusion and exclusion criteria were applied.
+- PTBcountryEstimates - pCCFullModelP_dataType1_16000_Estimates_1: This includes the Preterm estimates for 2010-2020 for 195 countries and areas. Variables as described in the equivalent LBW files. 
 
-7. PretermfinalDatabase
-- This is the final database used for the modelling of the Preterm birth estimates, after inclusion and exclusion criteria were applied.
+- PTBregEst - pCCFullModelP_dataType1DQC1_16000_regionalAndGlobal: SDG revision 1 regional and global estimates. Variables as described in the equivalent LBW files.
+
+- Preterm Other Regional and Global Estimates: <b>".csv"</b> files containing Preterm regional and global estimates as above, for 12 different regional groupings.
+
 
 ### Set-up
 For the chosen estimate: 

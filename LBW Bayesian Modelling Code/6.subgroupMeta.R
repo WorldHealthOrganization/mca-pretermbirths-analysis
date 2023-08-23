@@ -1,9 +1,3 @@
-# library(meta)
-# library(boot)
-# library(dplyr)
-# library(tidyverse)
-# library(scales)
-
 finalData<-readRDS("output/finalData.RDS")
 regionCodes<-readRDS("output/regionCodes.RDS")
 regionCodesOther<-readRDS("output/regionCodesOther.rds") %>% 
@@ -63,8 +57,6 @@ data<-finalData2 %>%
   filter(Year>=2015) %>% 
   dplyr::select(ISO) %>% distinct()
 
-# wpp2<-readRDS("output/wpp2.rds") %>% 
-#   filter(year==2020)
 wpp2020<-wpp2 %>% 
   filter(year==2020)
 

@@ -18,13 +18,6 @@ allDataFinal<-allDataLBW
 source("1.applyingInclusionCriteria.R")
 source("1.dqc5.R")
 
-#-----getting the bias terms
-#source(3.fitModels_biasInform.R)
-
-#Check that the estimates line is sitting on the adjusted surveys
-#for the DQC: Bi and DQC: Ci countries.
-#source(5. Plot countries (1 model) only_biasInform.R)
-
 #------move to the model fitting in 3. fitModels.R
 #That sets up the model data in the correct form for JAGs, 
 # sets up the covariates to be added into the models,
@@ -44,12 +37,6 @@ source("3.fitModels.R")
 source("4.countryRegionalAndGlobalRatesAndNumbers.R")
 
 
-#----- 5. Plot countries 
-#Takes the 195 country estimates from above and plots them alongside their
-# input data.
-#need to go in and run source("5. Plot countries (1 model) only.R") or the plots
-# wont load.
-
 #---6. subgroups
 #This takes the latest year of each of the country's subgroup data
 # and puts this into a random-effects meta-analysis. It applies
@@ -57,18 +44,3 @@ source("4.countryRegionalAndGlobalRatesAndNumbers.R")
 # to get the subgroup estimate numbers for each region.
 source("6.subgroupMeta.R")
 
-#----7. splineModelsValidation
-#Calls a function which fits the model to both the full database, 
-# and leave-one-out subsection of the database. 
-# It outputs comparisons between these model fits. 
-# You need to make a copy of your model file and call it
-# "<insert file name>_modelVal.txt".
-source("7. splineModelsValidation.R")
-
-#---8. Numbers for paper
-#This outputs the tables for the paper. 
-# The plots are generated for user to save. 
-# Number for papers are created.
-source("8.Figures for paper.R")
-source("8.Numbers for paper.R")
-source("8.LBWinclusionExclusionFlow.R")

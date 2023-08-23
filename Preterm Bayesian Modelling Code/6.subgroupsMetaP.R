@@ -1,11 +1,3 @@
-# library(meta)
-# library(dplyr)
-# library(scales)
-# library(boot)
-# library(tidyverse)
-# library(officer)
-# library(rvg)
-
 finalData<-readRDS("output/finalPreterm.RDS")
 regionCodes<-readRDS("output/regionCodes.RDS")
 #---------------------------------------------------
