@@ -20,7 +20,7 @@ wpp2<-merge(x=wpp, y=regionCodesOther, by="OfficialName", all.y=TRUE) %>%
 rm(wpp_2021, wpp)
 
 #------------------------------
-finalData<-readRDS("output/finalData.RDS")
+finalData<-readRDS("output/LBWfinalInputDatabase.RDS")
 
 alpha.level=0.05
 undo<-function(data){

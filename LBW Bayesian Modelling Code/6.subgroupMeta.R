@@ -1,4 +1,4 @@
-finalData<-readRDS("output/finalData.RDS")
+finalData<-readRDS("output/LBWfinalInputDatabase.RDS")
 regionCodes<-readRDS("output/regionCodes.RDS")
 regionCodesOther<-readRDS("output/regionCodesOther.rds") %>% 
   rename(regionName2=regionName, 
@@ -117,7 +117,7 @@ metaPlot4<-metaprop(event=LBW2000to2499g, n=LBWlt2500g,
                     overall = TRUE)
 
 #Plotting the forest plots of these meta-analyses
-pdf(file = "output/LBW subgroup.pdf", width = 10, height = 21)
+#pdf(file = "output/LBW subgroup.pdf", width = 10, height = 21)
 forest.meta(metaPlot, layout="JAMA", common=FALSE, 
             pooled.totals = FALSE, pooled.events = FALSE)
 grid.text("LBW<1000g / LBW<2500g", 0.5, 0.97, gp=gpar(cex=1))
@@ -130,7 +130,7 @@ grid.text("LBW 1500-1999g / LBW<2500g", 0.5, 0.97, gp=gpar(cex=1))
 forest.meta(metaPlot4, layout="JAMA", common=FALSE, 
             pooled.totals = FALSE, pooled.events = FALSE)
 grid.text("LBW 2000-2499g / LBW<2500g", 0.5, 0.97, gp=gpar(cex=1))
-dev.off()
+#dev.off()
 
 #------------------------------
 #Getting the estimate and upper and lower bounds for each proportion
@@ -167,8 +167,8 @@ lastestMetaEsts<-rbind(metaEstsR %>% mutate(regionName=row.names(metaEstsR)),
                        metaEstsT %>% mutate(regionName="Global"))
 
 #Read in the latest estimates
-  #rGLBW<-read.csv("output/pCCFullModel_16000_regionalAndGlobalEstimates.csv") %>% 
-  rGLBW<-read.csv("output/pCCFullModel_800_regionalAndGlobalEstimates.csv") %>% 
+  rGLBW<-read.csv(paste0("output/pCCFullModel","_", 
+                                             ((niter-nburnin)/nthin)*nchains,"_regionalAndGlobalEstimates.csv")) %>% 
   filter(year==2020) %>% dplyr::select(regionName, estN, estNU, 
                                        estNL, est) %>% 
   rename(wpp_lb=estN) 
@@ -218,7 +218,7 @@ alt<-merge(x=rGLBW, y=lastestMetaEsts %>% filter(regionName=="Global") %>%
                 LBW1000to1499g,LBW1000to1499gN, 
                 LBW1500to1999g, LBW1500to1999gN,
                 LBW2000to2499g, LBW2000to2499gN)
-write.csv(alt, "output/Table 10 - Meta Subgroup (applying total to LBW rates).csv")
+#write.csv(alt, "output/Table 10 - Meta Subgroup (applying total to LBW rates).csv")
 
 
 #Figure 
@@ -361,7 +361,7 @@ wpp<-merge(x=wpp2020 %>%
                                "Southern Asia"    ,
                                "Global")))
 
-write.csv(wpp, "output/Figure4table-heightOrder.csv")
+#write.csv(wpp, "output/Figure4table-heightOrder.csv")
 #-------------
 # Using all the years available
 metaPlot2<-metaprop(event=LBWlt1000g, n=LBWlt2500g, 
@@ -415,8 +415,8 @@ metaEstsT<-as.data.frame(list(LBWlt1000gL_meta=inv.logit(metaPlot2$TE.random-1.9
 allMetaEsts<-rbind(metaEstsR %>% mutate(regionName=row.names(metaEstsR)),
                    metaEstsT %>% mutate(regionName="Global"))
 
-write.csv(lastestMetaEsts, "output/latestMetaEsts.csv")
-write.csv(allMetaEsts, "output/allMetaEsts.csv")                       
+#write.csv(lastestMetaEsts, "output/latestMetaEsts.csv")
+#write.csv(allMetaEsts, "output/allMetaEsts.csv")                       
 
 
 
@@ -689,7 +689,7 @@ metaPlot4<-metaprop(event=LBW2000to2499g, n=LBWlt2500g,
                     random=TRUE, 
                     overall = TRUE)
 
-pdf(file = "output/LBW subgroup.pdf", width = 10, height = 21)
+#pdf(file = "output/LBW subgroup.pdf", width = 10, height = 21)
 forest.meta(metaPlot, layout="JAMA", common=FALSE, 
             pooled.totals = FALSE, pooled.events = FALSE)
 grid.text("LBW<1000g / LBW<2500g", 0.5, 0.97, gp=gpar(cex=1))
@@ -702,7 +702,7 @@ grid.text("LBW 1500-1999g / LBW<2500g", 0.5, 0.97, gp=gpar(cex=1))
 forest.meta(metaPlot4, layout="JAMA", common=FALSE, 
             pooled.totals = FALSE, pooled.events = FALSE)
 grid.text("LBW 2000-2499g / LBW<2500g", 0.5, 0.97, gp=gpar(cex=1))
-dev.off()
+#dev.off()
 
 metaEstsR<-as.data.frame(list(LBWlt1000gL_meta=inv.logit(metaPlot$TE.random.w-1.96*metaPlot$seTE.random.w),
                               LBWlt1000g_meta=inv.logit(metaPlot$TE.random.w),
@@ -719,8 +719,8 @@ metaEstsR<-as.data.frame(list(LBWlt1000gL_meta=inv.logit(metaPlot$TE.random.w-1.
 
 lastestMetaEsts<-rbind(metaEstsR %>% mutate(regionName=row.names(metaEstsR)))
 
-# rGLBW<-read.csv("output/pCCFullModel_16000_regionalAndGlobalEstimates.csv") %>% 
-rGLBW<-read.csv("output/pCCFullModel_800_regionalAndGlobalEstimates.csv") %>% 
+rGLBW<-read.csv(paste0("output/pCCFullModel","_", 
+                       ((niter-nburnin)/nthin)*nchains,"_regionalAndGlobalEstimates.csv")) %>% 
   filter(year==2020) %>% dplyr::select(regionName, estN, estNU, 
                                        estNL, est) %>% 
   rename(wpp_lb=estN) 
@@ -764,7 +764,7 @@ latestMetaEsts<-merge(x=lastestMetaEsts, y=rGLBW,
                 LBW1500to1999g, LBW1500to1999gN,
                 LBW2000to2499g, LBW2000to2499gN)
 
-write.csv(latestMetaEsts, "output/Table 10 - Meta Subgroup (NA applied to all).csv")
+write.csv(latestMetaEsts, "output/LBWsubgroupRegionalEstimates_NAappliedtoall.csv")
 
 
 #Figure 

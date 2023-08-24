@@ -1,4 +1,4 @@
-finalData<-readRDS("output/finalPreterm.RDS")
+finalData<-readRDS("output/PretermfinalInputDatabase.RDS")
 regionCodes<-readRDS("output/regionCodes.RDS")
 #---------------------------------------------------
 #Getting only the data with sub-envelopes 
@@ -94,7 +94,7 @@ additionalStudies<-studyAll %>% filter(DQexclusion==2& Year>=2010) %>%
 
 finalData3<-bind_rows(finalData2, studies2, merge(x=additionalStudies, y=regionCodes, by="ISO", all.x=TRUE))
 
-saveRDS(finalData3, "output/Preterm subgroups.rds") 
+saveRDS(finalData3, "output/pretermSubgroupData.rds") 
 
 
 finalData3<-finalData3%>% 
@@ -131,20 +131,20 @@ metaPlot3<-metaprop(event=Preterm32tolt37weeks, n=Preterm,
                     random=TRUE, 
                     overall = TRUE)
 
-#Plotting the forest plots of these meta-analyses
+#Plotting the forest plots of these meta-analyses - uncomment to output forest plot
 
-pdf(file = paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
-                  ((niter-nburnin)/nthin)*nchains,"_pretermSubgroupForest", ".pdf"), width = 10, height = 23)
-forest.meta(metaPlot, layout="JAMA", common=FALSE, 
-            pooled.totals = TRUE, pooled.events = FALSE)
-grid.text("Preterm<28 weeks / Preterm<37 weeks", 0.5, 0.97, gp=gpar(cex=1))
-forest.meta(metaPlot2, layout="JAMA", common=FALSE, 
-            pooled.totals = TRUE, pooled.events = FALSE)
-grid.text("Preterm 28 - <32 weeks / Preterm<37 weeks", 0.5, 0.97, gp=gpar(cex=1))
-forest.meta(metaPlot3, layout="JAMA", common=FALSE, 
-            pooled.totals = TRUE, pooled.events = FALSE)
-grid.text("Preterm 32 - <37 weeks weeks / Preterm<37 weeks", 0.5, 0.97, gp=gpar(cex=1))
-dev.off()
+# pdf(file = paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
+#                   ((niter-nburnin)/nthin)*nchains,"_pretermSubgroupForest", ".pdf"), width = 10, height = 23)
+# forest.meta(metaPlot, layout="JAMA", common=FALSE, 
+#             pooled.totals = TRUE, pooled.events = FALSE)
+# grid.text("Preterm<28 weeks / Preterm<37 weeks", 0.5, 0.97, gp=gpar(cex=1))
+# forest.meta(metaPlot2, layout="JAMA", common=FALSE, 
+#             pooled.totals = TRUE, pooled.events = FALSE)
+# grid.text("Preterm 28 - <32 weeks / Preterm<37 weeks", 0.5, 0.97, gp=gpar(cex=1))
+# forest.meta(metaPlot3, layout="JAMA", common=FALSE, 
+#             pooled.totals = TRUE, pooled.events = FALSE)
+# grid.text("Preterm 32 - <37 weeks weeks / Preterm<37 weeks", 0.5, 0.97, gp=gpar(cex=1))
+# dev.off()
 
 #------------------------------
 #Getting the estimate and upper and lower bounds for each proportion
@@ -223,7 +223,7 @@ latestMetaEsts<-merge(x=rGLBW, y=lastestMetaEsts %>% filter(regionName=="Global"
                 Preterm32tolt37weeks, Preterm32tolt37weeksN)
 
 write.csv(latestMetaEsts, paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
-                                 ((niter-nburnin)/nthin)*nchains,"_Table 10 - Preterm Meta Subgroup (applying total to all regions)", ".csv"))
+                                 ((niter-nburnin)/nthin)*nchains,"_pretermSubgroupRegionalResultsTable", ".csv"))
 
 #------------------
 #Plotting the subgroups
@@ -374,22 +374,22 @@ wpp<-merge(x=readRDS("output/wpp2.rds") %>% filter(year==2020) %>%
                                "Southern Asia"    ,                                                             
                                "Global")))
 
-write.csv(wpp, paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
-                      ((niter-nburnin)/nthin)*nchains,"_Figure4table-reorder", ".csv"))
+# write.csv(wpp, paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
+#                       ((niter-nburnin)/nthin)*nchains,"_Figure4table-reorder", ".csv"))
+# 
 
 
-
-doc <- rvg::dml(doc, ggobj = p1, type = 'body')  
-# Write the document to a file
-#print(doc, target = 'PRETERM/output/Figure4editable.pptx')
-
-officer::read_pptx() %>%
-  # add slide ----
-officer::add_slide() %>%
-  # specify object and location of object ----
-officer::ph_with(doc, ph_location()) %>%
-  # export slide -----
-base::print(
-  target = paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
-                  ((niter-nburnin)/nthin)*nchains,"_Figure4editable.pptx")
-)
+# doc <- rvg::dml(doc, ggobj = p1, type = 'body')  
+# # Write the document to a file
+# #print(doc, target = 'PRETERM/output/Figure4editable.pptx')
+# 
+# officer::read_pptx() %>%
+#   # add slide ----
+# officer::add_slide() %>%
+#   # specify object and location of object ----
+# officer::ph_with(doc, ph_location()) %>%
+#   # export slide -----
+# base::print(
+#   target = paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
+#                   ((niter-nburnin)/nthin)*nchains,"_Figure4editable.pptx")
+# )

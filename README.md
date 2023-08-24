@@ -20,7 +20,8 @@ The background, methods and results for these analyses can be found in the corre
 
 2. Quick Access Inputs and Outputs - LBW 
 
-- LBWfinalInputDatabase: Final input database that was used in the LBW modelling, after inclusion and exclusion criteria were applied. This is included as <b>".csv"</b> and <b>".rds"</b> files.
+- LBWfinalInputDatabase: Final input database that was used in the LBW modelling, after inclusion and exclusion criteria were applied. This is included as <b>".csv"</b> and <b>".rds"</b> files. This is produced in the modelling code, and will be located in the `output` folder with the same name.
+
 - LBWcovariates: These are the five covariate time-series (1995-2020) used for the LBW estimates: gross national income per person purchasing power parity (GNI) (constant 2017 international $), prevalence of underweight among female adults, adult female literacy rate, modern contraception prevalence rate and percentage urban population. These are included as <b>".csv"</b> and <b>".rds"</b> files.
 
 - LBWcountryEstimates - pCCFullModel_16000_Estimates: This includes the LBW estimates for 2000-2020 for 195 countries and areas.
@@ -50,7 +51,10 @@ The background, methods and results for these analyses can be found in the corre
   
 4. Quick Access Inputs and Outputs - Preterm 
 
-- PretermfinalInputDatabase: Final input database that was used in the Preterm modelling, after inclusion and exclusion criteria were applied. This is included as <b>".csv"</b> and <b>".rds"</b> files. 
+- PretermfinalInputDatabase: Final input database that was used in the Preterm modelling, after inclusion and exclusion criteria were applied. This is included as <b>".csv"</b> and <b>".rds"</b> files. This is produced in the modelling code, and will be located in the `output` folder with the same name.
+
+- Pretermcovariate LBWcountryEstimates - pCCFullModel_16000_Estimates: 
+This is the same file that is produced in the LBW code for the 195 country estimates, which is used as the covariate in the preterm modelling.
 
 - PTBcountryEstimates - pCCFullModelP_dataType1_16000_Estimates_1: This includes the Preterm estimates for 2010-2020 for 195 countries and areas. Variables as described in the equivalent LBW files. 
 

@@ -1,6 +1,6 @@
 #Adding other groupings
 
-pretermFinal<-readRDS("output/finalPreterm.rds")
+#pretermFinal<-readRDS("output/finalPreterm.rds")
 
 #0 = Singleton's only
 #1 - singles and multiples
@@ -35,11 +35,11 @@ methodGroup<-addWBregs %>%
   mutate(topCat=substr(category, 1,1))
 
 
-saveRDS(methodGroup, "output/finalPreterm_MGA.rds")
+saveRDS(methodGroup, "output/PretermfinalInputDatabase.rds")
 
 
 
 #Outputting method of GA countries
 methodGACountries<-methodGroup %>%  group_by(methodGAGroup) %>% distinct(OfficialName) %>% arrange(methodGAGroup, OfficialName)
-write.csv(methodGACountries,"output/methodGACountries.csv")
+# write.csv(methodGACountries,"output/methodGACountries.csv")
 

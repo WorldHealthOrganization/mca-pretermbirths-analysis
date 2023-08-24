@@ -1,5 +1,5 @@
-finalData1<-readRDS("output/finalData.RDS")
-
+#finalData1<-readRDS("output/finalData.RDS")
+finalData1<-finalData
 finalData1<-finalData1 %>% mutate(sourceSubType=ifelse(ISO=="IND" & Source=="Admin", 3, sourceSubType))
 
 sources<-finalData1 %>% dplyr::select(ISO, Source) %>% distinct() %>% mutate(sourceIndex=ifelse(Source=="Admin", 1, 2)) %>% group_by(ISO) %>% 
@@ -103,7 +103,7 @@ finalData1<-merge(x=finalData1, y=survey,by=c("ISO","Source"), all.x=TRUE) %>%
 finalData<-finalData1
 
 #save
-saveRDS(finalData, "output/finalData.RDS")
+saveRDS(finalData, "output/LBWfinalInputDatabase.RDS")
 
 
 #-----------
@@ -125,4 +125,4 @@ finalData5<-merge(x=finalData4, y=subEnvs, by=c("OfficialName", "Year"), all.x=T
                 highQual, subEnvs, newcriteriaDQC, allBWUsed, allLBUsed, 
                 #allTBUsed, 
                 lbwrCalculated, lt1000, lt1500) %>% arrange(Country, Year)
-write.csv(finalData5, "output/DQC5criteria_calculations.csv")
+#write.csv(finalData5, "output/DQC5criteria_calculations.csv")

@@ -1,25 +1,10 @@
-# library(tidyverse)
-# library(devtools)
-# devtools::install_github("MJAlexander/distortr")
-# library(distortr)
-# library(rjags)
-# library(R2jags)
-# library(fields)
-# library(splines)
-# library(boot)
-# library(RColorBrewer)
-# library(writexl)
-# library(parallel)
-
 source("functions/runMCMC2.R")
 source("functions/runMCMCGlobal2.R")
 source("functions/createArrayForStan.R")
-#source("0.loadPackages.R")
-#source("processData.R")
-#source("functions/outputDataCovs2_2.R")
+
 #-----
 #Data setup
-finalData<-readRDS("output/finalData.RDS")
+finalData<-readRDS("output/LBWfinalInputDatabase.RDS")
 finalData<-finalData %>% mutate(sourceIndex=ifelse(Source=="Admin", 1, 0),
                                 newFlagN=ifelse(newFlag=="Ai"| newFlag=="Aii", 1,
                                                 ifelse(newFlag==1 |newFlag=="Bi", 2,
@@ -116,27 +101,26 @@ mod<-runMCMC2(method = "splines",
                                   model.file.path = file)
 Sys.time()-starttime
 
-#Outputting model diagnostics
-pdf_name <- paste0("output/" ,fileName,"_", 
-                   ((niter-nburnin)/nthin)*nchains,"_tracePlots", ".pdf")
-pdf(pdf_name, width = 10, height = 5)
-R2jags::traceplot(mod, varname=c("beta.d", "mu.beta",
-                                 "tau.beta", "mu.beta.global",
-                                 "tau.beta.global", "sigma.delta", 
-                                 "tau.beta", "tau.delta",
-                                 "alpha", "Z.tk", "delta.hc"), mfrow=c(3,3),
-                  ask=FALSE)
-
-#autocorr.plot(mod$BUGSoutput$sims.matrix[,84:88], lag=100, ask=TRUE)
-
-dev.off()
+#Outputting model diagnostics - uncomment this section to output
+# pdf_name <- paste0("output/" ,fileName,"_", 
+#                    ((niter-nburnin)/nthin)*nchains,"_tracePlots", ".pdf")
+# pdf(pdf_name, width = 10, height = 5)
+# R2jags::traceplot(mod, varname=c("beta.d", "mu.beta",
+#                                  "tau.beta", "mu.beta.global",
+#                                  "tau.beta.global", "sigma.delta", 
+#                                  "tau.beta", "tau.delta",
+#                                  "alpha", "Z.tk", "delta.hc"), mfrow=c(3,3),
+#                   ask=FALSE)
+# 
+# dev.off()
 
 summary<-as.data.frame(mod$BUGSoutput$summary)
 max(effectiveSize(mod))
 
-write.csv(mod$BUGSoutput$summary,
-          paste0("output/" ,fileName,"_",
-                 ((niter-nburnin)/nthin)*nchains,"_modelSummary", ".csv"))
+#Uncomment this to output the model summary
+# write.csv(mod$BUGSoutput$summary,
+#           paste0("output/" ,fileName,"_",
+#                  ((niter-nburnin)/nthin)*nchains,"_modelSummary", ".csv"))
 
 
 

@@ -31,4 +31,4 @@ pretermAll<-merge(x=pretermTogether, y=regionCodes,
 #------
 #SAVING
 
-saveRDS(pretermAll, "output/pretermPreIncExc.rds")
+# saveRDS(pretermAll, "output/pretermPreIncExc.rds")

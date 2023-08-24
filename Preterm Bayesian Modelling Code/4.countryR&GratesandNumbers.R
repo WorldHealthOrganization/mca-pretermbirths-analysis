@@ -433,14 +433,30 @@ lbw<-regionalAndGlobal2%>% filter(year %in% c(2010,2020)) %>%
 # help<-merge(x=lbw, y=lbw2, by="regionName", 
 #             all.x=TRUE)
 
-table22<-merge(x=table2, y=lbw, 
-               by="regionName2", 
-               all.x = TRUE) %>% 
-  arrange(factor(regionIndex, levels=c(5,6,3,1,2,4,7))) %>% 
-  dplyr::select(-regionIndex)
 
-#write.csv(table22, "PRETERM/output/Preterm table3.csv")
-write.csv(table22,
-          paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
-                 ((niter-nburnin)/nthin)*nchains,"_table2", ".csv"))
+#ARR Method 3 (WHA method) - between 2012 and 2020.
+arr2<-regionalAndGlobal2 %>% filter(year >=2012) %>% 
+  arrange(regionName, year) %>% group_by(regionName) %>% 
+  do(model=lm(log(est)~year, data=.)) %>% 
+  mutate(WHA_AARR2012=round(100*(1-exp(coef(model)["year"])),2))%>%
+  dplyr::select(regionName, WHA_AARR2012)
+
+#- between 2000 and 2020.
+arr3<-regionalAndGlobal2 %>% filter(year >=2000) %>% 
+  arrange(regionName, year) %>% group_by(regionName) %>% 
+  do(model=lm(log(est)~year, data=.)) %>% 
+  mutate(WHA_AARR2000=round(100*(1-exp(coef(model)["year"])),2))%>%
+  dplyr::select(regionName, WHA_AARR2000)
+
+arrAll<-merge(x=arr2, y=arr3, by="regionName")
+
+
+table23<-merge(x=table22, y=arrAll, 
+               by="regionName", 
+               all.x = TRUE) %>% 
+  arrange(factor(regionIndex, levels=c(5,6,3,1,2,4,7)))
+
+# write.csv(table23,
+#           paste0("output/" ,substr(fileName, 1, nchar(fileName)),"_", 
+#                  ((niter-nburnin)/nthin)*nchains,"_table2", ".csv"))
 

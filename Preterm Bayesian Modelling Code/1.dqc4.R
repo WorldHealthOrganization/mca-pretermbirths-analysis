@@ -20,7 +20,7 @@ missing2<-merge(x=missing, y=adminCodes, by="isoYear", all.x=TRUE) %>%
 missing3<-merge(x=missing2, y=lbw, by="isoYear", all.x=TRUE) %>% 
   dplyr::select(OfficialName, Year, sourceSubTypePreterm, sourceSubTypeLBWsource=SourcetypeforLBLBW, sourceSubTypeLBWupdated=sourceSubType, isoYear)
 
-write.csv(missing3, "output/missingSourceSubType.csv")
+# write.csv(missing3, "output/missingSourceSubType.csv")
 
 missing4<-missing3 %>% dplyr::select(isoYear, sourceSubTypeLBWsource,
                                      sourceSubTypeLBWupdated) %>% mutate(Source="Admin")
@@ -173,7 +173,7 @@ finalPreterm<-merge(x=finalPreterm1, y=allCats2,
                     all.x=TRUE)
 
 
-saveRDS(finalPreterm, "output/finalPreterm.RDS")
+#saveRDS(finalPreterm, "output/finalPreterm.RDS")
 
 
 #-----
@@ -185,6 +185,6 @@ calcs<-finalPreterm %>%
                 highQual, category, allGAUsed, allLBUsed, 
                 allTBUsed, pretermRCalculated, subEnvProp, subEnvProp2, subEnvs) %>% arrange(Country, Year)
 
-write.csv(calcs, "output/DQC4_calculations.csv")
-
-write.csv(help2, "output/DQC4_countries.csv")
+# write.csv(calcs, "output/DQC4_calculations.csv")
+# 
+# write.csv(help2, "output/DQC4_countries.csv")

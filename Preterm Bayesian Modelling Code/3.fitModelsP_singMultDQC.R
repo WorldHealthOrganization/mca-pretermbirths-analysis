@@ -15,7 +15,7 @@ source("functions/runMCMCGlobal2P.R")
 
 #-----
 #Data setup
-finalPreterm<-readRDS("output/finalPreterm_MGA.RDS")
+finalPreterm<-readRDS("output/PretermfinalInputDatabase.RDS")
 finalPreterm<-finalPreterm %>% mutate(sourceIndex=ifelse(category %in% c("A"), 1,
                                                          ifelse(category %in% c("B"), 2,
                                                                 ifelse(category %in% c("C"), 3, 
@@ -105,7 +105,7 @@ rm("input.data"
    #,"stanData"
 )
 
-file<-"models/pCCFullModelP_dataType1DQC1_TEST.txt"
+file<-"models/pCCFullModelP_dataType1DQC1.txt"
 fileName<-substr(file,8, as.numeric(gregexpr(".txt", file))-1)
 starttime<-Sys.time()
 
@@ -122,25 +122,26 @@ mod<-runMCMC2P(method = "splines",
                model.file.path = file, save.pdf=FALSE, adapt=FALSE)
 Sys.time()-starttime
 
-#Outputting the model diagnostics
-pdf_name <- paste0("output/" ,fileName,"_", 
-                   ((niter-nburnin)/nthin)*nchains,"_tracePlots", ".pdf")
-pdf(pdf_name, width = 10, height = 5)
-R2jags::traceplot(mod, varname=c("beta.d", "mu.beta",
-                                 "tau.beta", "mu.beta.global",
-                                 "tau.beta.global", "sigma.delta", 
-                                 "tau.beta", "tau.delta",
-                                 "alpha", "Z.tk", "delta.hc"), mfrow=c(3,3),
-                  ask=FALSE)
-
-dev.off()
+#Outputting the model diagnostics - uncomment this to output
+# pdf_name <- paste0("output/" ,fileName,"_", 
+#                    ((niter-nburnin)/nthin)*nchains,"_tracePlots", ".pdf")
+# pdf(pdf_name, width = 10, height = 5)
+# R2jags::traceplot(mod, varname=c("beta.d", "mu.beta",
+#                                  "tau.beta", "mu.beta.global",
+#                                  "tau.beta.global", "sigma.delta", 
+#                                  "tau.beta", "tau.delta",
+#                                  "alpha", "Z.tk", "delta.hc"), mfrow=c(3,3),
+#                   ask=FALSE)
+# 
+# dev.off()
 
 summary<-as.data.frame(mod$BUGSoutput$summary)
 max(effectiveSize(mod))
 
-write.csv(mod$BUGSoutput$summary,
-          paste0("output/" ,fileName,"_",
-                 ((niter-nburnin)/nthin)*nchains,"_modelSummary", ".csv"))
+#Uncomment this to output model summary
+# write.csv(mod$BUGSoutput$summary,
+#           paste0("output/" ,fileName,"_",
+#                  ((niter-nburnin)/nthin)*nchains,"_modelSummary", ".csv"))
 
 #Model Coeff
-mod[["BUGSoutput"]][["median"]][["alpha"]]
+#mod[["BUGSoutput"]][["median"]][["alpha"]]

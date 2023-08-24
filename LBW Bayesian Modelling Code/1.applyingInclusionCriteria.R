@@ -64,7 +64,7 @@ allDataInc<-allDataPlus %>%
                           ifelse(cri1_lbw==1 & cri2_lbw==0,2, NA)))))))   ## Create a variable to flag 80% wpp threshold
 
 
-saveRDS(allDataInc, "output/allDataInc.RDS")
+#saveRDS(allDataInc, "output/allDataInc.RDS")
 removedInc<-allDataInc %>% filter(is.na(cri12_lbw) | cri12_lbw!=1)
 #allDataFinal1<-allDataInc %>% filter(cri12_lbw==1 & !(ISO=="FRA" & Year==2020))
 allDataFinal1<-allDataInc %>% filter(cri12_lbw==1)
@@ -80,7 +80,7 @@ help<-allDataInc %>% filter(is.na(lb_lbw) & Source=="Admin"&facility_birth>=80&s
          NumberofbabieswithBW, LBWlt2500g, LBW_adjusted_point_est, Source, sourceSubType, wpp_lb, wpp_lbw, facility_birth,
          cri1_lbw, cri2_lbw, cri12_lbw) %>% 
    mutate(sourceSubType=ifelse(sourceSubType==3, "HMIS(DHIS2) (primarily for low-and middle-income countries)", sourceSubType))
-write.csv(help, "output/adminWithoutBirthEstFB80HMIS.csv")
+#write.csv(help, "output/adminWithoutBirthEstFB80HMIS.csv")
 
 
 
@@ -166,7 +166,7 @@ finalData %>% group_by(qualityHierarchy) %>% summarise(n=n())
 help<-finalData %>% dplyr::select(isoYear, y, yL, yL2, meanN, meanY)
 
 #Save
-saveRDS(finalData, "output/finalData.rds")
+#saveRDS(finalData, "output/finalData.rds")
 
 #----
 #Regional codes dataset
