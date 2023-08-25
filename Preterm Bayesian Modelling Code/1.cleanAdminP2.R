@@ -3,8 +3,8 @@
 adminBefore1=readxl::read_excel(paste0(adminName), 
                                 sheet = "VN database", skip=1)
 
-adminCodes=readxl::read_excel(paste0(adminName), 
-                              sheet = "VN Source database", skip=1)
+adminCodes=suppressWarnings(readxl::read_excel(paste0(adminName), 
+                              sheet = "VN Source database", skip=1))
 
 
 #Change the variable names
@@ -14,16 +14,16 @@ adminCodes<-tidyVariableNames(adminCodes)
 
 #----------
 #Remove LBW and stillbriths columms from the joint admin database
-adminBefore1<-adminBefore1 %>% 
+adminBefore1<-suppressWarnings(adminBefore1 %>% 
   mutate (Numberoftotalbirths22=ifelse(is.na(as.numeric(Numberoftotalbirths22)),
-                                       as.numeric(NumberofallLBs23) + as.numeric(Numberofstillbirths),Numberoftotalbirths22))
+                                       as.numeric(NumberofallLBs23) + as.numeric(Numberofstillbirths),Numberoftotalbirths22)))
 adminBefore1<-adminBefore1[,-c(5,6,7,8,20,21,which(grepl("LBW", names(adminBefore1)) | 
                                              grepl("Stillbirths", names(adminBefore1))| 
                                              grepl("stillbirths", names(adminBefore1))|
                                                grepl("SGA", names(adminBefore1))|
                                                grepl("Neonatal", names(adminBefore1))|
                                              grepl("neonatal", names(adminBefore1))))]
-adminBefore2<-adminBefore1 %>% mutate_at(vars(names(adminBefore1)[3:ncol(adminBefore1)]), as.numeric)
+adminBefore2<-suppressWarnings(adminBefore1 %>% mutate_at(vars(names(adminBefore1)[3:ncol(adminBefore1)]), as.numeric))
 
 #Inputting the new preterm data from the country consultation
 source("1.newPreterm.R")

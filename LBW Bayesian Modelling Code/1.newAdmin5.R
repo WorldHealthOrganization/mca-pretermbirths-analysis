@@ -1,5 +1,5 @@
-newAdmin<-readxl::read_excel(paste0(newAdminName), 
-                             sheet = "data", skip=1)
+newAdmin<-suppressWarnings(readxl::read_excel(paste0(newAdminName), 
+                             sheet = "data", skip=1))
 newAdmin2<-tidyVariableNames(newAdmin) %>% mutate(row=row_number(),
                                                   isoYear=paste0(IsoCode, Year),
                                                   SourcetypeforLBLBW=ifelse(SourcetypeforLBLBW=="NA", NA, as.numeric(SourcetypeforLBLBW))) %>% 
@@ -7,14 +7,14 @@ newAdmin2<-tidyVariableNames(newAdmin) %>% mutate(row=row_number(),
 
 
 #Calculating the LBW subgroups from using the data that is already there
-newAdmin3<-newAdmin2 %>% mutate(calculateBW=ifelse(NumberofbabieswithBW=="CL", 1, 
+newAdmin3<-suppressWarnings(newAdmin2 %>% mutate(calculateBW=ifelse(NumberofbabieswithBW=="CL", 1, 
                                                    ifelse(NumberofbabieswithBW=="NA_LBW%", 2, 0)),
                                 calculateLBW=ifelse(LBWlt2500g=="CL", 1, 0),
                                 calculate1000=ifelse(LBWlt1000g=="CL", 1, 0), 
                                 calculate1500=ifelse(LBWlt1500g=="CL", 1, 0),
                                 calculate15002499=ifelse(LBW1500to2499g=="CL", 1, 0), 
                                 calculate10001999=ifelse(LBW1000to1999g=="CL", 1, 0)) %>% 
-  mutate_at(c(names(newAdmin2)[4:22]), as.numeric)
+  mutate_at(c(names(newAdmin2)[4:22]), as.numeric))
 
 newAdmin4<-newAdmin3 %>% mutate(isoYear=paste0(IsoCode, Year)) %>%
   mutate(LBWlt2500g=ifelse(calculateLBW==0, LBWlt2500g,

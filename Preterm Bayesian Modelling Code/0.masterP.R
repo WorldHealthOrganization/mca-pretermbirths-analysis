@@ -1,7 +1,5 @@
 rm(list=ls(all=TRUE))
 
-#setwd("C:/Users/EllenBradley/OneDrive - London School of Hygiene and Tropical Medicine/VN modelling/VN-bayesian-model")
-
 # load functions
 Rfiles <- list.files(file.path(paste0(getwd(),"/functions/")), ".R") #gets names of r files
 sapply(paste0(paste0(getwd(),"/functions/"), Rfiles), source) #gets functions from file
@@ -40,6 +38,15 @@ source("3.fitModelsP_singMultDQC.R")
 # Outputs country, regional and global level estimates.
 source("4.countryR&GratesandNumbers.R")
 
+#-----5.otherRegionalGroupings
+#This is the same code as above which produces the regional and global 
+# groupings. You need to go into the code and pick from the list which 
+# regional grouping to produce.
+#This sometimes uses a lot of space on the machine you're using. 
+# If this is a problem, clear your workspace and un-comment the code at the 
+# top of the script and rerun.
+#source("5.otherRegionalGroupings.R")
+
 
 #---- 6. subgroupsMetaP
 #This is the meta-analysis of the subgroup data.
@@ -47,5 +54,7 @@ source("4.countryR&GratesandNumbers.R")
 # Uses the latest year from each country, and applies the total pooled estimate
 # to the regional and global point estimate of the preterm number.
 # Also plots the subgroups by region.
+#If you have clearer your workspace above, then un-comment lines 79 and 80 in 
+# this code to rerun some of the initial raw survey data cleaning.
 source("6.subgroupsMetaP.R")
 

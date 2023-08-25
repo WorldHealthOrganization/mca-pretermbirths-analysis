@@ -6,7 +6,7 @@ surveyBefore=read_excel(paste0(surveyName),
 surveyBefore<-tidyVariableNames(surveyBefore)
 
 #Tidying variables
-surveyBefore<-surveyBefore %>% rename(
+surveyBefore<-suppressWarnings(surveyBefore %>% rename(
                           Year=`MidtopointforLBWestimate`,
                           iso=`ISOCode`,
                           Countryname=Country, sourceSubTypeOther=Survey) %>% 
@@ -20,7 +20,7 @@ surveyBefore<-surveyBefore %>% rename(
   mutate(Source="Survey", sourceSubType=ifelse(sourceSubTypeOther=="DHS", 5,
                                                ifelse(sourceSubTypeOther=="MICS", 6,
                                                       7))) %>% 
-  mutate(isoYear=paste0(iso, Year))
+  mutate(isoYear=paste0(iso, Year)))
 surveyBefore$sourceSubType<-as.numeric(surveyBefore$sourceSubType)
 
 surveyBefore<-surveyBefore %>% filter(iso!="XKX")

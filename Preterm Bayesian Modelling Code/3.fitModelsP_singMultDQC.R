@@ -29,7 +29,7 @@ regionSummary<-finalPreterm %>% group_by(sourceIndex, regionName) %>%
   summarise(n=n(), nC=length(unique(ISO)))
 
 
-regionCodes<-readRDS("output/regionCodes.RDS")
+regionCodes<-readRDS("outputs/regionCodes.RDS")
 
 d<-finalPreterm
 N<-dim(d)[1]

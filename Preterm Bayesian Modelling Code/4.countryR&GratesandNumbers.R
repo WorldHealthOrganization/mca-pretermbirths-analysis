@@ -7,7 +7,7 @@ undo<-function(data){
   return(long)
 }
 #Takes the SDG regions (rather than the modified regions used in the modelling)
-regionCodesOther<-readRDS("output/regionCodesOther.rds") %>% 
+regionCodesOther<-readRDS("input/regionCodesOther.rds") %>% 
   rename(regionName2=regionName, regionIndex2=regionIndex)
 #WPP Livebirths estimates
 wpp2<-readRDS("output/wpp2.rds")

@@ -1,5 +1,5 @@
 #wpp_2021 <- read_dta(paste0("input/", wpp))
-wpp_2021 <- readxl::read_xlsx(paste0("input/", wpp2))
+wpp_2021 <- suppressWarnings(readxl::read_xlsx(paste0("input/", wpp2)))
 birth_healthfacility_who2021 <- read_dta(paste0("input/", birth_healthfacility))
 
 

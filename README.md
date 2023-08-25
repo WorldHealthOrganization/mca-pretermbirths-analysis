@@ -16,7 +16,7 @@ The background, methods and results for these analyses can be found in the corre
 - R code which contains the order at which to run the R scripts for the modelling (<b>"0.master.R"</b>)
 - R code which contains the file names for all the input data (<b>"0.fileNames.R"</b>)
 - R code which contains the packages needed for the code (<b>"0.loadPackages.R"</b>) 
-- 1-7 numbered R scripts: contatining all of the commands needed set up the project, create the input database, run the model, produce the country, regional and global estimates, create country estimates, and run the model validation.
+- 1-6 numbered R scripts: contatining all of the commands needed set up the project, create the input database, run the model, produce the country, regional and global estimates and create country estimates.
 
 2. Quick Access Inputs and Outputs - LBW 
 
@@ -47,7 +47,7 @@ The background, methods and results for these analyses can be found in the corre
 - R code which contains the order at which to run the R scripts for the modelling (<b>"0.masterP.R"</b>)
 - R code which contains the file names for all the input data (<b>"0.fileNames.R"</b>)
 - R code which contains the packages needed for the code (<b>"0.loadPackages.R"</b>) 
-- 1-7 numbered R scripts: contatining all of the commands needed set up the project, create the input database, run the model, produce the country, regional and global estimates, create country estimates, and run the model validation.
+- 1-6 numbered R scripts: contatining all of the commands needed set up the project, create the input database, run the model, produce the country, regional and global estimates, and create country estimates.
   
 4. Quick Access Inputs and Outputs - Preterm 
 

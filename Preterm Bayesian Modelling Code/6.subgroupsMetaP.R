@@ -74,8 +74,10 @@ studies<-readxl::read_xlsx("inputs/VN subgroup data_EH_LS_4_hb.xlsx",
 
 studies2<-merge(x=studies, y=regionCodes, 
                 by="ISO", all.x=TRUE) 
-source("0.fileNames.R")
-source("1.cleanSurveyP2.R")
+
+#If you have cleared your workspace since you created the input database then rerun these files.
+#source("0.fileNames.R")
+#source("1.cleanSurveyP2.R")
 
 additionalStudies<-studyAll %>% filter(DQexclusion==2& Year>=2010) %>% 
   mutate(Source="Study", 

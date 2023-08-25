@@ -1,12 +1,13 @@
-finalPreterm1<-readRDS("output/finalPreterm.RDS")
+finalPreterm1<-readRDS("output/PretermfinalInputDatabase.RDS")
 
 #-----------------------------
 #Missing source sub type- replacing with the LBW one from the same database
-lbw<-readRDS("inputs/LBWfinalData.rds") %>% filter(Source=="Admin") %>% 
+lbw<-readRDS("inputs/LBWfinalInputDatabase.rds") %>% filter(Source=="Admin") %>% 
   dplyr::select(isoYear, sourceSubType) 
 
-adminCodes=readxl::read_excel(paste0(adminName), 
-                              sheet = "VN Source database", skip=1)
+adminCodes=suppressWarnings(readxl::read_excel(paste0(adminName), 
+                              sheet = "VN Source database", skip=1))
+
 adminCodes<-tidyVariableNames(adminCodes) %>% mutate(isoYear=paste0(IsoCode, MidYear))
 
 

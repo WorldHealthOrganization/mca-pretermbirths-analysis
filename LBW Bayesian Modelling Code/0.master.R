@@ -11,7 +11,9 @@ source("0.loadPackages.R")
 #-----------------------#
 #--1. create database --#
 
-source("1.cleanAdmin3.R")
+source("1.cleanAdmin3.R") 
+# Warning message: "Expecting logical in AI2103 / R2103C35: got 'EB Updated 13/12 so same as what went to CC'" may appear. 
+# This is just due for formatting differences so can be ignored.
 source("1.cleanSurvey.R")
 source("1.combineDataAddingRegions.R")
 allDataFinal<-allDataLBW
@@ -36,6 +38,11 @@ source("3.fitModels.R")
 #to get regional and global estimates.
 source("4.countryRegionalAndGlobalRatesAndNumbers.R")
 
+#-----5.otherRegionalGroupings
+#This is the same code as above which produces the regional and global 
+# groupings. You need to go into the code and pick from the list which 
+# regional grouping to produce.
+#source("5.otherRegionalGroupings.R")
 
 #---6. subgroups
 #This takes the latest year of each of the country's subgroup data
@@ -43,4 +50,7 @@ source("4.countryRegionalAndGlobalRatesAndNumbers.R")
 # the global pooled estimate to the regional LBW estimate numbers
 # to get the subgroup estimate numbers for each region.
 source("6.subgroupMeta.R")
+
+# A generic warning message about the Fisher scoring algorithm
+# may be printed. This is ok, check if you want!
 

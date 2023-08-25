@@ -34,14 +34,14 @@ index<-data.frame(ISO=unique(d$ISO),
 covarset<-merge(x=covarset, y=index,by="ISO", all.y=TRUE)%>% 
   dplyr::select(-countryIndex2) %>% distinct()
 
-transform<-covarset %>% mutate(gniT=log(gni),
+transform<-suppressWarnings(covarset %>% mutate(gniT=log(gni),
                             literacy_femT=ifelse(literacy_fem>100, log(100-99.99999), log(100-literacy_fem)),
                             contraception_metT=log(1-contraception_met),
                             bmi_f_underT=log(bmi_f_under),
                             urbanT=urban
                             #,nmrT=nmr-mean(covarset$nmr, na.rm=TRUE)
                             #underweightT=underweight
-)
+))
 
 
 #centring the covariates

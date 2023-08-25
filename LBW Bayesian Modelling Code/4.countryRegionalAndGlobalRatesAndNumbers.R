@@ -4,11 +4,11 @@ source("0.loadPackages.R")
 source("0.fileNames.R")
 
 #Takes the SDG regions (rather than the modified regions used in the modelling)
-regionCodesOther<-readRDS("output/regionCodesOther.rds") %>% 
+regionCodesOther<-readRDS("input/regionCodesOther.rds") %>% 
   rename(regionName2=regionName, regionIndex2=regionIndex)
 
 #WPP Livebirths estimates
-wpp_2021 <- readxl::read_xlsx(paste0("input/", wpp2))
+wpp_2021 <- suppressWarnings(readxl::read_xlsx(paste0("input/", wpp2)))
 wpp<-wpp_2021 %>% filter(LocTypeName=="Country/Area" & Year>1994 & Year<=2020) %>% 
   mutate(OfficialName=ifelse(LocationName=="North Macedonia", "Republic of North Macedonia",
                              ifelse(LocationName=="Micronesia (Fed. States of)", "Micronesia (Federated States of)",

@@ -1,6 +1,6 @@
 #INCLUSION AND EXCLUSION CRITERIA 
 
-wpp_2021 <- readxl::read_xlsx(paste0("inputs/", wpp2))
+wpp_2021 <- suppressWarnings(readxl::read_xlsx(paste0("inputs/", wpp2)))
 birth_healthfacility_who2021 <- read_dta(paste0("inputs/", birth_healthfacility))
 
 #---Prepare birth at health facility  
