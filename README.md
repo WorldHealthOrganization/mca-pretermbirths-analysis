@@ -84,7 +84,7 @@ We thank Ellen Bradley (@ellenBradley18) for the development and implementation 
 We thank Gerard Lopez (@LOPEZ-Gerard) for the testing and enchancement of this code into github.
 
 ### Conceptualisation of the Models
-We thank Ellen Bradley, Eric Ohuma, Alexandra Lewin, Yemi Okwaraji, Hannah Blencowe and Joy Lawn (LSHTM), Julia Krasevec, Joel Conkle, Samuel Chakwera, Jennifer Requejo and Chika Hayashi (UNICEF), Gretchen Stevens, Ann-Beth Moller, Jenny A Cresswell, Emily White Johansson and Allisyn Morran (WHO) and Laith Hussain-Alkhateeb.
+We thank Ellen Bradley, Eric Ohuma, Alexandra Lewin, Yemi Okwaraji, Hannah Blencowe and Joy Lawn (LSHTM), Julia Krasevec, Joel Conkle, Samuel Chakwera, Jennifer Requejo and Chika Hayashi (UNICEF), Gretchen Stevens, Ann-Beth Moller, Jenny A Cresswell, Emily White Johansson, Elaine Borghi, and Allisyn Morran (WHO) and Laith Hussain-Alkhateeb (University of Gothenburg).
 
 ## References
 <a id="1">[1]</a> 
